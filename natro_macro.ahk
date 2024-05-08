@@ -107,6 +107,18 @@ OnMessage(0x5555, nm_backgroundEvent, 255)
 OnMessage(0x5556, nm_sendHeartbeat)
 OnMessage(0x5557, nm_ForceReconnect)
 OnMessage(0x5558, nm_AmuletPrompt)
+OnMessage(0x5561, nm_nectarPot)
+
+nectarPot(wParam, lParam, *) {
+  if !(hwnd := GetRobloxHWND())
+    return 0
+  yOffset := GetYOffset(hwnd, &fail)
+  if fail
+    return 2
+  if !ba_getNectarPercent(nectarNames[wParam])
+    return 3
+  return 1
+}
 
 ; set version identifier
 VersionID := "1.0.0.1"
@@ -246,7 +258,7 @@ nm_importPaths()
 		"gtb", ["blue", "mountain", "red"], ; go to (field) booster
 		"gtc", ["clock", "antpass", "robopass", "honeydis", "treatdis", "blueberrydis", "strawberrydis", "coconutdis", "gluedis", "royaljellydis", "blender", "windshrine", ; go to collect (machine)
 				"stockings", "wreath", "feast", "gingerbread", "snowmachine", "candles", "samovar", "lidart", "gummybeacon", "rbpdelevel", ; beesmas
-				"honeylb", "honeystorm", "stickerstack", "stickerprinter", "normalmm", "megamm", "nightmm", "extrememm", "wintermm"], ; other
+				"honeylb", "honeystorm", "stickerstack", "stickerprinter", "normalmm", "megamm", "nightmm", "extrememm", "wintermm", "nectarpot"], ; other
 		"gtf", ["bamboo", "blueflower", "cactus", "clover", "coconut", "dandelion", "mountaintop", "mushroom", "pepper", "pinetree", "pineapple", "pumpkin",
 				"rose", "spider", "strawberry", "stump", "sunflower"], ; go to field
 		"gtp", ["bamboo", "blueflower", "cactus", "clover", "coconut", "dandelion", "mountaintop", "mushroom", "pepper", "pinetree", "pineapple", "pumpkin",

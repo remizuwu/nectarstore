@@ -2312,18 +2312,17 @@ nm_command(command)
 			postdata .= "]}"
 			discord.SendMessageAPI(postdata)
 		}
-        case "StoreNectar", "NectarStore":
+        case "StoreNectar", "NectarStore", "storeNectar", "storenectar":
+		if !(params[2] ~= "i)^(invigorating|motivating|refreshing|satisfying|comforting)$")
+            return discord.sendembed("invalid nectar") command_buffer.removeAt(1)
 		static nectarMap := Map("Comforting", 1, "Refreshing", 2, "Satisfying", 3, "Motivating", 4, "Invigorating", 5)
     DetectHiddenWindows 1
-    msgbox "hi"
     if winexist("natro_macro.ahk ahk_class AutoHotkey")
-        Switch messageOut := SendMessage(0x5561, nectarMap[params[1]]) {
-            case 1: discord.sendEmbed("successfully stored " params[1] " nectar!", 0x00FF00 + 0)
-default:discord.sendEmbed("failed to store nectar because: " (messageOut == 0 ? "Roblox not found!" : messageOut = 2 ? "Unable to detect yOffset!" : messageOut = 3 ? "Nectar " params[1] " is empty!" : "unhandled error!"), 0xFF0000 + 0)
-    }
+        Switch messageOut := SendMessage(0x5561, nectarMap[params[2]]) {
+            case 1: discord.sendEmbed("successfully stored " params[2] " nectar!", 0x00FF00 + 0)
+            default:discord.sendEmbed("failed to store nectar because: " (messageOut == 0 ? "Roblox not found!" : messageOut = 2 ? "Unable to detect yOffset!" : messageOut = 3 ? "Nectar " params[2] " is empty!" : "unhandled error!"), 0xFF0000 + 0)
+        }
     detectHiddenWindows 0
-    if !(params[2] ~= "i)^(invigorating|motivating|refreshing|satisfying|comforting)$")
-        return discord.sendembed("invalid nectar") command_buffer.removeAt(1)
 function() {
     global bitmaps
     GetRobloxClientPos()

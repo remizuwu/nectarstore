@@ -109,15 +109,15 @@ OnMessage(0x5557, nm_ForceReconnect)
 OnMessage(0x5558, nm_AmuletPrompt)
 OnMessage(0x5561, nm_nectarPot)
 
-nectarPot(wParam, lParam, *) {
-  if !(hwnd := GetRobloxHWND())
-    return 0
-  yOffset := GetYOffset(hwnd, &fail)
-  if fail
-    return 2
-  if !ba_getNectarPercent(nectarNames[wParam])
-    return 3
-  return 1
+nm_nectarPot(wParam, lParam, *) {
+  	if !(hwnd := GetRobloxHWND())
+    	return 0
+  	yOffset := GetYOffset(hwnd, &fail)
+  	if fail
+    	return 2
+	if !ba_getNectarPercent(nectarNames[wParam])
+    	return 3
+  	return 1
 }
 
 ; set version identifier

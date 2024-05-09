@@ -2347,11 +2347,11 @@ nm_command(command)
 			}
 			Gdip_DisposeImage(pBMScreen)
 			GetRobloxClientPos()
-			if !Gdip_ImageSearch(pBMScreen, bitmaps["empty" SubStr(params[1], 1, 3)], &FoundPos, , , , , 5) {
+			if !Gdip_ImageSearch(pBMScreen, bitmaps["empty" SubStr(params[2], 1, 3)], &FoundPos, , , , , 5) {
 				Gdip_DisposeImage(pBMScreen)
 				return
 			}
-			if !Gdip_ImageSearch(pBMScreen, bitmaps["pot" SubStr(params[1], 1, 3)], , , , , , 5) {
+			if !Gdip_ImageSearch(pBMScreen, bitmaps["pot" SubStr(params[2], 1, 3)], , , , , , 5) {
 				Gdip_DisposeImage(pBMScreen)
 				pBMScreen := Gdip_BitmapFromScreen(((windowX + windowWidth) / 2) - 286 "|" ((windowY + windowHeight) / 2) - 267 "|290|159")
 				click (n := StrSplit(FoundPos, ","))[1] " " n[2]

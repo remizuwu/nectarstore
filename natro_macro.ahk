@@ -110,8 +110,9 @@ OnMessage(0x5558, nm_AmuletPrompt)
 OnMessage(0x5561, nm_nectar)
 
 nm_nectar(wParam, lParam, *) {
+	static nectarArray := ["Comforting", "Refreshing", "Satisfying", "Motivating", "Invigorating"]
 	if wParam<6 
-		return nm_nectarPot(wParam)
+		return nm_nectarPot(nectarArray[wParam])
 	MsgBox("Test, running path.")
 	return 1
 }

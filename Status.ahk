@@ -2322,7 +2322,7 @@ nm_command(command)
 				messageOut := SendMessage(0x5561, nectarMap[params[2]])
 			detectHiddenWindows 0
 			if messageOut!=1
-				discord.sendEmbed("failed to store nectar because: " (messageOut = 0 ? "Roblox not found!" : messageOut = 2 ? "Unable to detect yOffset!" : messageOut = 3 ? "Nectar " params[2] " is empty!" : "unhandled error!"), 0xFF0000 + 0)
+				discord.sendEmbed("failed to store nectar because: " (messageOut = 0 ? "Roblox not found!" : messageOut = 2 ? "Unable to detect yOffset!" : messageOut = 3 ? "Nectar " params[2] " is empty!" : "unhandled error! " messageOut), 0xFF0000 + 0)
 			else {
 				DetectHiddenWindows 1
 				if WinExist("natro_macro.ahk ahk_class AutoHotkey")

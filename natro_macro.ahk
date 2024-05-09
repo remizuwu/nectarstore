@@ -110,19 +110,20 @@ OnMessage(0x5558, nm_AmuletPrompt)
 OnMessage(0x5561, nm_nectar)
 
 nm_nectar(wParam, lParam, *) {
-	static nectarArray := ["Comforting", "Refreshing", "Satisfying", "Motivating", "Invigorating"]
-	if wParam<6 
-		return nm_nectarPot(nectarArray[wParam])
+	if wParam<6
+		return nm_nectarPot(wParam)
 	MsgBox("Test, running path.")
 	return 1
 }
 
 nm_nectarPot(wParam) {
+	global nectarNames
   	if !(hwnd := GetRobloxHWND())
     	return 0
   	yOffset := GetYOffset(hwnd, &fail)
   	if fail
     	return 2
+	MsgBox(ba_getNectarPercent(nectarNames[wParam]))
 	if !ba_getNectarPercent(nectarNames[wParam])
     	return 3
   	return 1

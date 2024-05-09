@@ -107,9 +107,16 @@ OnMessage(0x5555, nm_backgroundEvent, 255)
 OnMessage(0x5556, nm_sendHeartbeat)
 OnMessage(0x5557, nm_ForceReconnect)
 OnMessage(0x5558, nm_AmuletPrompt)
-OnMessage(0x5561, nm_nectarPot)
+OnMessage(0x5561, nm_nectar)
 
-nm_nectarPot(wParam, lParam, *) {
+nm_nectar(wParam, lParam, *) {
+	if wParam<6 
+		return nm_nectarPot(wParam)
+	MsgBox("Test, running path.")
+	return 1
+}
+
+nm_nectarPot(wParam) {
   	if !(hwnd := GetRobloxHWND())
     	return 0
   	yOffset := GetYOffset(hwnd, &fail)
